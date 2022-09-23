@@ -1,0 +1,48 @@
+Summarised findings from: https://medium.com/from-the-scratch/http-server-what-do-you-need-to-know-to-build-a-simple-http-server-from-scratch-d1ef8945e4fa
+
+Programming with TCP/IP Sockets
+
+    1. Create the Socket
+    2. Identify the Socket
+    3. Server end: wait for incoming connection
+    4. Send and receive messages
+    5. Close the Socket
+
+1. Create a Socket
+    Socket is created with the parameters:
+        - domain/address family
+        - type
+        - protocol
+
+    Domain or Address Family:
+        Communication domain in which socket should be created
+
+    Type:
+        Type of service, selected according to properties required by application
+
+    Protocol:
+        Protocol to support socket operation
+        Useful where some families may have more than one protocol to support a given type of service
+
+
+2. Identify a Socket
+    Need to assign a transport address to socket (port number IP networking)
+    This is known as "binding" an address
+
+    Defined in socket address structure
+    int bind(int socket, const struct sockaddr *address, socklen_t address_len);
+
+    Socket is defined in Step 1
+
+        struct sockaddr_in 
+            { 
+                __uint8_t         sin_len; 
+                sa_family_t       sin_family; // Address family used to set up socket
+                in_port_t         sin_port; // Port number
+                struct in_addr    sin_addr; // Machine's IP address
+                char              sin_zero[8]; 
+            };
+
+3. Server end: wait for incoming connection
+
+4. Send and receive messages
